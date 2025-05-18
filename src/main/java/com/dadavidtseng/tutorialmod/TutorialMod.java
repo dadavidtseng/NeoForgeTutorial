@@ -1,3 +1,8 @@
+//----------------------------------------------------------------------------------------------------
+// TutorialMod.java
+//----------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------
 package com.dadavidtseng.tutorialmod;
 
 import com.dadavidtseng.tutorialmod.block.ModBlocks;
@@ -21,13 +26,18 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
+//----------------------------------------------------------------------------------------------------
+
+/// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TutorialMod.MOD_ID)
 public class TutorialMod
 {
+    //----------------------------------------------------------------------------------------------------
     public static final String MOD_ID = "tutorialmod";
+    //----------------------------------------------------------------------------------------------------
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    //----------------------------------------------------------------------------------------------------
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public TutorialMod(IEventBus modEventBus, ModContainer modContainer)
@@ -51,11 +61,13 @@ public class TutorialMod
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
+    //----------------------------------------------------------------------------------------------------
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
     }
 
+    //----------------------------------------------------------------------------------------------------
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
@@ -65,13 +77,14 @@ public class TutorialMod
             event.accept(ModItems.RAW_BISMUTH);
         }
 
-        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
         {
             event.accept(ModBlocks.BISMUTH_BLOCK);
             event.accept(ModBlocks.BISMUTH_ORE);
         }
     }
 
+    //----------------------------------------------------------------------------------------------------
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
@@ -79,6 +92,7 @@ public class TutorialMod
 
     }
 
+    //----------------------------------------------------------------------------------------------------
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents

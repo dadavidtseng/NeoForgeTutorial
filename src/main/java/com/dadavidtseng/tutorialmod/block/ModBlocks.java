@@ -1,3 +1,8 @@
+//----------------------------------------------------------------------------------------------------
+// ModBlocks.java
+//----------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------
 package com.dadavidtseng.tutorialmod.block;
 
 import com.dadavidtseng.tutorialmod.TutorialMod;
@@ -15,35 +20,43 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-/// If we don't have texture inside the world, check blockstates folder
-/// If we don;t have texture inside the inventory, check models/item folder
-public class ModBlocks {
-    public static final DeferredRegister.Blocks BLOCKS =
-            DeferredRegister.createBlocks(TutorialMod.MOD_ID);
-
+//----------------------------------------------------------------------------------------------------
+// If we don't have texture inside the world, check blockstates folder
+// If we don;t have texture inside the inventory, check models/item folder
+public class ModBlocks
+{
+    //----------------------------------------------------------------------------------------------------
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(TutorialMod.MOD_ID);
+    //----------------------------------------------------------------------------------------------------
     public static final DeferredBlock<Block> BISMUTH_BLOCK = registerBlock("bismuth_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4.f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
-
+    //----------------------------------------------------------------------------------------------------
     public static final DeferredBlock<Block> BISMUTH_ORE = registerBlock("bismuth_ore",
             () -> new DropExperienceBlock(UniformInt.of(2, 4),
                     BlockBehaviour.Properties.of().strength(3.f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-
+    //----------------------------------------------------------------------------------------------------
     public static final DeferredBlock<Block> BISMUTH_DEEPSLATE_ORE = registerBlock("bismuth_deepslate_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 6),
                     BlockBehaviour.Properties.of().strength(4.f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
-    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
+    //----------------------------------------------------------------------------------------------------
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
+    {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;
     }
 
-    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
+    //----------------------------------------------------------------------------------------------------
+    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
+    {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    public static void register(IEventBus eventBus) {
+    //----------------------------------------------------------------------------------------------------
+    public static void register(IEventBus eventBus)
+    {
         BLOCKS.register(eventBus);
     }
 }
