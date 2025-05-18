@@ -6,6 +6,7 @@
 package com.dadavidtseng.tutorialmod.block;
 
 import com.dadavidtseng.tutorialmod.TutorialMod;
+import com.dadavidtseng.tutorialmod.block.custom.MagicBlock;
 import com.dadavidtseng.tutorialmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -39,6 +40,9 @@ public class ModBlocks
     public static final DeferredBlock<Block> BISMUTH_DEEPSLATE_ORE = registerBlock("bismuth_deepslate_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 6),
                     BlockBehaviour.Properties.of().strength(4.f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+    //----------------------------------------------------------------------------------------------------
+    public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties.of().strength(2.f).requiresCorrectToolForDrops()));
 
     //----------------------------------------------------------------------------------------------------
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
