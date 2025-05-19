@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------
-package com.dadavidtseng.tutorialmod.block.custom;
+package com.dadavidtseng.tutorialmod.item.custom;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
