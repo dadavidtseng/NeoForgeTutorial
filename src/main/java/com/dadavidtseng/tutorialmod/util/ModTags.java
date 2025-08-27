@@ -19,6 +19,9 @@ public class ModTags
     //----------------------------------------------------------------------------------------------------
     public static class Blocks
     {
+        public static final TagKey<Block> NEED_BISMUTH_TOOL = createTag("need_bismuth_tool");
+        public static final TagKey<Block> INCORRECT_FOR_BISMUTH_TOOL = createTag("incorrect_for_bismuth_tool");
+
         public static TagKey<Block> createTag(String name)
         {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, name));
