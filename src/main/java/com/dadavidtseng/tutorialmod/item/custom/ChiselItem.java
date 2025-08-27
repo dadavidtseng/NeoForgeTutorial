@@ -6,6 +6,7 @@
 package com.dadavidtseng.tutorialmod.item.custom;
 
 import com.dadavidtseng.tutorialmod.block.ModBlocks;
+import com.dadavidtseng.tutorialmod.component.ModDataComponents;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -62,17 +63,22 @@ public class ChiselItem extends Item
                     item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
 
             level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);
+
+            // Save custom data `COORDINATES` to this particular item in the item stack.
+            // @Nullable set
+            // if you want to reset the data, you can pass in a `null` in the second parameter.
+            context.getItemInHand().set(ModDataComponents.COORDINATES, context.getClickedPos());
         }
 
         return InteractionResult.SUCCESS;
     }
 
     // Delete later
-    @Override
-    public UseAnim getUseAnimation(ItemStack stack)
-    {
-        return UseAnim.DRINK;
-    }
+//    @Override
+//    public UseAnim getUseAnimation(ItemStack stack)
+//    {
+//        return UseAnim.DRINK;
+//    }
 
     @Override
     public void appendHoverText(ItemStack stack,
@@ -80,13 +86,20 @@ public class ChiselItem extends Item
                                 List<Component> tooltipComponents,
                                 TooltipFlag tooltipFlag)
     {
-        if(Screen.hasShiftDown())
+        if (Screen.hasShiftDown())
         {
             tooltipComponents.add(Component.translatable("tooltip.tutorialmod.chisel.shift_down"));
-        }
-        else
+        } else
         {
             tooltipComponents.add(Component.translatable("tooltip.tutorialmod.chisel"));
+        }
+
+        // @Nullable get
+        // this annotation applied only when the value should always be checked against null
+        // because the developer could do nothing to prevent null from happening.
+        if (stack.get(ModDataComponents.COORDINATES) != null)
+        {
+            tooltipComponents.add(Component.literal("Last Block change at: " + stack.get(ModDataComponents.COORDINATES)));
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
