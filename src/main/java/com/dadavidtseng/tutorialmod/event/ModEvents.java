@@ -61,15 +61,21 @@ public class ModEvents
 
             // Get all blocks that should be destroyed by the hammer's AOE effect
             // The "1" parameter likely represents the hammer's mining level or area size
-            for (BlockPos pos : HammerItem.getBlocksToBeDestroyed(1, initialBlockPos, serverPlayer))
+            for (BlockPos pos : HammerItem.getBlocksToBeDestroyed(2, initialBlockPos, serverPlayer))
             {
                 if (pos == initialBlockPos || !hammer.isCorrectToolForDrops(mainHandItem, event.getLevel().getBlockState(pos)))
                 {
                     continue;
                 }
 
+                // Mark this block as being harvested to prevent recursive event firing
                 HARVESTED_BLOCKS.add(pos);
+
+                // Destroy the block using the server player's game mode
+                // This will drop items and handle all the normal block breaking logic
                 serverPlayer.gameMode.destroyBlock(pos);
+
+                // Remove the block from the harvested set since it's now processed
                 HARVESTED_BLOCKS.remove(pos);
             }
         }
