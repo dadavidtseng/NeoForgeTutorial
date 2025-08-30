@@ -10,7 +10,11 @@
   "item.tutorialmod.bismuth_shovel": "Bismuth Shovel",
   "item.tutorialmod.bismuth_axe": "Bismuth Axe",
   "item.tutorialmod.bismuth_hoe": "Bismuth Hoe",
-  "item.tutorialmod.bismuth_hoe": "Bismuth Hammer",
+  "item.tutorialmod.bismuth_hammer": "Bismuth Hammer",
+  "item.tutorialmod.bismuth_helmet": "Bismuth Helmet",
+  "item.tutorialmod.bismuth_chestplate": "Bismuth Chestplate",
+  "item.tutorialmod.bismuth_leggings": "Bismuth Leggings",
+  "item.tutorialmod.bismuth_boots": "Bismuth Boots",
 
   "block.tutorialmod.bismuth_block": "Block of Bismuth",
   "block.tutorialmod.bismuth_ore": "Bismuth Ore",
