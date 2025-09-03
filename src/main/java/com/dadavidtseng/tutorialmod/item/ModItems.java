@@ -9,6 +9,7 @@ import com.dadavidtseng.tutorialmod.TutorialMod;
 import com.dadavidtseng.tutorialmod.item.custom.FuelItem;
 import com.dadavidtseng.tutorialmod.item.custom.ChiselItem;
 import com.dadavidtseng.tutorialmod.item.custom.HammerItem;
+import com.dadavidtseng.tutorialmod.item.custom.ModArmorItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
@@ -74,8 +75,9 @@ public class ModItems
                     attributes(PickaxeItem.createAttributes(ModToolTiers.BISMUTH, 7F, -3.5f))));
     //----------------------------------------------------------------------------------------------------
     public static final DeferredItem<ArmorItem> BISMUTH_HELMET = ITEMS.register("bismuth_helmet",
-            () -> new ArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+            () -> new ModArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(19))));
+    //----------------------------------------------------------------------------------------------------
     public static final DeferredItem<ArmorItem> BISMUTH_CHESTPLATE = ITEMS.register("bismuth_chestplate",
             () -> new ArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(19))));
