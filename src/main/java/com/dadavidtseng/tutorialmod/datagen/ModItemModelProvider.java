@@ -30,7 +30,9 @@ import java.util.LinkedHashMap;
 public class ModItemModelProvider extends ItemModelProvider
 {
     private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
-    static {
+
+    static
+    {
         trimMaterials.put(TrimMaterials.QUARTZ, 0.1F);
         trimMaterials.put(TrimMaterials.IRON, 0.2F);
         trimMaterials.put(TrimMaterials.NETHERITE, 0.3F);
@@ -78,6 +80,8 @@ public class ModItemModelProvider extends ItemModelProvider
         trimmedArmorItem(ModItems.BISMUTH_CHESTPLATE);
         trimmedArmorItem(ModItems.BISMUTH_LEGGINGS);
         trimmedArmorItem(ModItems.BISMUTH_BOOTS);
+
+        basicItem(ModItems.BISMUTH_HORSE_ARMOR.get());
     }
 
     // Shoutout to El_Redstoniano for making this
@@ -163,6 +167,6 @@ public class ModItemModelProvider extends ItemModelProvider
     {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "item/"+item.getId().getPath()));
+                ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "item/" + item.getId().getPath()));
     }
 }
